@@ -6,9 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<script src="./js/script.js">
+<script src="">
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(reg => console.log("Service Worker Registered", reg))
+            .catch(err => console.error("Service Worker Error", err));
+    }
+</script>
+<script src="">
+    let deferredPrompt;
+    
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      document.getElementById("install-button").style.display = "block";
+    });
+  
+    document.getElementById("install-button").addEventListener("click", () => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("User installed the app");
+        } else {
+          console.log("User dismissed the install prompt");
+        }
+        deferredPrompt = null;
+      });
+    });
 </script>
 <body>
-    heelo
+    <h1>hello world</h1>
+    <div>
+        <button id="install-button" style="display: none;">Install App</button>
+    </div>
 </body>
+
 </html>
