@@ -1,0 +1,19 @@
+{
+  "name": "redman",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "compression": "^1.8.0",
+    "express": "^4.21.2",
+    "firebase-tools": "^13.34.0",
+    "helmet": "^8.0.0",
+    "serve-static": "^1.16.2"
+  }
+}
